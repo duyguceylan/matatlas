@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Pix2Video</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+</head>
+
+<body>
+    <div id="body">
+
+        <h1 id="title"></h1>
+        <br>
+        <div id="author-list">
+        </div>
+        <br>
+        <div id="affiliation-list">
+        </div>
+        <!-- <div id="footnote">
+            <span >*joint first authors</span>
+        </div> -->
+
+        <!-- <div id="button-list">
+            <a id="arxiv">
+                <img src="assets/logos/arXiv.svg">
+                <span>arXiv</span>
+            </a>
+        </div> -->
+
+        <div id="content" style="max-width:900px;margin:auto; margin-bottom: 1em" >
+            <div id='method'> 
+                <img src="assets/imgs/matlas_teaser_v2.png" height=285>
+            </div>
+
+            <div id='method'> 
+                <h2>Abstract</h2>
+                <p style="max-width:900px; font-size:18px; margin:auto; text-align: justify; margin-bottom: 1em;">We present MatAtlas, a method for consistent text-guided 3D model texturing. Following recent progress we leverage a large scale text-to-image generation model (e.g., Stable Diffusion) as a prior to texture a 3D model. We carefully design an RGB texturing pipeline that leverages a grid pattern diffusion, driven by depth and edges. By proposing a multi-step texture refinement process, we significantly improve the quality and 3D consistency of the texturing output. To further address the problem of baked-in lighting, we move beyond RGB colors and pursue assigning parametric materials to the assets. Given the high-quality initial RGB texture, we propose a novel material retrieval method capitalized on Large Language Models (LLM), enabling editabiliy and relightability. We evaluate our method on a wide variety of geometries and show that our method significantly outperform prior arts. We also carefully analyze the role of each component through a detailed ablation study.</p>
+            </div>
+            <br>
+            <!-- <div id='method'> 
+                <h2>Method Overview</h2>
+                <p style="max-width:900px; font-size:18px; margin:auto; text-align: justify; margin-bottom: 1em;">Pix2Video first inverts each frame with DDIM-inversion and consider it as the initial noise for the denoising process. To edit each frame (lower row), we select a reference frame (upper row), inject its self-attention features to the UNet. At each diffusion step, we also update the latent of the current frame guided by the latent of the reference.</p>
+                <embed src="assets/imgs/texture_passes.pdf" height=285>
+            </div> -->
+            <br>
+            <h2>Material assignment results on Source 3D Assets</h2>
+            For each of the following 3D models from the Souce 3D Assets dataset, we show the generated texture, the material part segmentation, and the result obtained by retreiving materials for each part.
+            <br>
+            <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">an american footbal</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/american_football.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/american_football.mp4">
+                                </video>
+                                <div>
+                                    segmentation 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/american_football_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">urban boots</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/urban_boots.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/urban_boots.mp4">
+                                </video>
+                                <div>
+                                    segmentation 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/urban_boots_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <div id="pigs">
+                    <center><span style="color: #009c3b;font-family: Bradley Hand;">a baseball glove</span></center>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/baseball_glove.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/baseball_glove.mp4">
+                                </video>
+                                <div>
+                                    segmentation
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/baseball_glove_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a hiking sport shoes</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/sport_shoes_hiking.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/sport_shoes_hiking.mp4">
+                                </video>
+                                <div>
+                                    segmentation 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/sport_shoes_hiking_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">an interior plant ficus</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/interior_plant_ficus.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/interior_plant_ficus.mp4">
+                                </video>
+                                <div>
+                                    segmentation 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/interior_plant_ficus_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a beverage carton set</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/beverage_carton_set_02.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/beverage_carton_set_02.mp4">
+                                </video>
+                                <div>
+                                    segmentation 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/beverage_carton_set_02_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">an umbrella closed</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/umbrella_closed.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/umbrella_closed.mp4">
+                                </video>
+                                <div>
+                                    segmentation 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/umbrella_closed_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a sewing machine</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/sewing_machine.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/sewing_machine.mp4">
+                                </video>
+                                <div>
+                                    segmentation 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/sewing_machine_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="fish">
+                    <center><span style="color: #009c3b;font-family: Bradley Hand;">an armchair</span></center></center>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/armchair_20.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/armchair_20.mp4">
+                                </video>
+                                <div>
+                                    segmentation
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/armchair_20_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="kite">
+                    <center><span style="color: #009c3b;font-family: Bradley Hand;">a small duffle bag</span></center>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/small_duffle_bag.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/small_duffle_bag.mp4">
+                                </video>
+                                <div>
+                                    segmentation
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/small_duffle_bag_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="kite">
+                    <center><span style="color: #009c3b;font-family: Bradley Hand;">a notebook</span></center>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/notebook.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/notebook.mp4">
+                                </video>
+                                <div>
+                                    segmentation
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/notebook_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="kite">
+                    <center><span style="color: #009c3b;font-family: Bradley Hand;">a modern bentwood chair</span></center>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/modern_bentwood_chair_01.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/modern_bentwood_chair_01.mp4">
+                                </video>
+                                <div>
+                                    segmentation
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/modern_bentwood_chair_01_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="kite">
+                    <center><span style="color: #009c3b;font-family: Bradley Hand;">a cardboard box bag</span></center>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/cardboard_box_bag.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/cardboard_box_bag.mp4">
+                                </video>
+                                <div>
+                                    segmentation
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/cardboard_box_bag_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="kite">
+                    <center><span style="color: #009c3b;font-family: Bradley Hand;">a high urban bench</span></center>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/evaluation-textures/high_urban_bench_03.mp4">
+                                </video>
+                                <div>
+                                    generated texture
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/segmentation/high_urban_bench_03.mp4">
+                                </video>
+                                <div>
+                                    segmentation
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/material/high_urban_bench_03_bright.mp4">
+                                </video>
+                                <div>
+                                    material assignment
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+            <br>
+            <br>
+            <h2>Material assignment results on Objaverse models</h2>
+            For each of the following 3D models from the Objaverse dataset, we show the generated texture, the material part segmentation, and the result obtained by retreiving materials for each part.
+            <br>
+            <br>
+            <div id="libby">
+                <span style="color: #009c3b;font-family: Bradley Hand;">a bible</span>
+                <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                    <tr>
+                        <th>
+                            <video autoplay muted loop width="250">
+                                <source src="assets/objaverse-material/bible/mesh_360_inpainted.mp4">
+                            </video>
+                            <div>
+                                generated texture
+                            </div>
+                        </th>
+                        <th>
+                            <video autoplay muted loop width="250">
+                                <source src="assets/objaverse-material/bible/mesh_360_segmentation.mp4">
+                            </video>
+                            <div>
+                                segmentation 
+                            </div>
+                        </th>
+                        <th>
+                            <video autoplay muted loop width="250">
+                                <source src="assets/objaverse-material/bible/bible_bright.mp4">
+                            </video>
+                            <div>
+                                material assignment
+                            </div>
+                        </th>
+                    </tr>
+                  </table>
+            </div>
+            <br>
+            <div id="libby">
+                <span style="color: #009c3b;font-family: Bradley Hand;">a hourglass</span>
+                <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                    <tr>
+                        <th>
+                            <video autoplay muted loop width="250">
+                                <source src="assets/objaverse-material/hourglass/mesh_360_inpainted.mp4">
+                            </video>
+                            <div>
+                                generated texture
+                            </div>
+                        </th>
+                        <th>
+                            <video autoplay muted loop width="250">
+                                <source src="assets/objaverse-material/hourglass/mesh_360_segmentation.mp4">
+                            </video>
+                            <div>
+                                segmentation 
+                            </div>
+                        </th>
+                        <th>
+                            <video autoplay muted loop width="250">
+                                <source src="assets/objaverse-material/hourglass/hourglass_bright.mp4">
+                            </video>
+                            <div>
+                                material assignment
+                            </div>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <br>   
+
+            <div id="results">
+                <h2>Comparison of textured results with state-of-the-art methods on Objaverse</h2>
+                We provide additional comparisons between our texture generation method and baselines.
+                <br><br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a lizard</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0247/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    ours
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0247/text2tex/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    Text2Tex 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0247/texture/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    TEXTure
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a cappuccino</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0094/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    ours
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0094/text2tex/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    Text2Tex 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0094/texture/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    TEXTure
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a candle</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0090/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    ours
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0090/text2tex/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    Text2Tex 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0090/texture/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    TEXTure
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a barrel</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0033/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    ours
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0033/text2tex/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    Text2Tex 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0033/texture/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    TEXTure
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a apple</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0017/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    ours
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0017/text2tex/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    Text2Tex 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0017/texture/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    TEXTure
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a binoculars</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0055/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    ours
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0055/text2tex/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    Text2Tex 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0055/texture/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    TEXTure
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a sunflower</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0355/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    ours
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0355/text2tex/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    Text2Tex 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0355/texture/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    TEXTure
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div><br>
+                <div id="libby">
+                    <span style="color: #009c3b;font-family: Bradley Hand;">a bookcase</span>
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0064/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    ours
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0064/text2tex/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    Text2Tex 
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="250">
+                                    <source src="assets/comparison/0064/texture/mesh_360_inpainted.mp4">
+                                </video>
+                                <div>
+                                    TEXTure
+                                </div>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                
+                <h2>Relighting assets with different illumination conditions</h2>
+                Our method generates relightable assets that can be lit with different illumination conditions.
+                <br><br>
+                    <div id="libby">
+                        <span style="color: #009c3b;font-family: Bradley Hand;">a camping tent</span>
+                        <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/relighting/camping_tent/video_blender_autumn_park_2k.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/relighting/camping_tent/video_blender_vestibule_2k.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/relighting/camping_tent/video_blender_workshop_2k.mp4">
+                                    </video>
+                                </th>
+                            </tr>
+                          </table>
+                    </div>
+                    <br>
+                    <div id="libby">
+                        <span style="color: #009c3b;font-family: Bradley Hand;">an interior ficus plant</span>
+                        <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/relighting/ficus/video_blender_autumn_park_2k_ficus.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/relighting/ficus/video_blender_studio_small_03_2k_ficus.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/relighting/ficus/video_blender_workshop_2k_ficus.mp4">
+                                    </video>
+                                </th>
+                            </tr>
+                          </table>
+                    </div>
+                    <br>
+                
+                <br>
+                <h2>More Results</h2>
+                Below we provide more examples of our texture generation results.
+                <br><br>
+                <section class="slider-wrapper">
+                <button class="slide-arrow slide-arrow-prev">
+                            &#8249;
+                </button>
+                <button class="slide-arrow slide-arrow-next">
+                            &#8250;
+                </button>
+                <ul class="slides-container">
+                    <li class="slide">
+                        <span style="color: #009c3b;font-family: Bradley Hand;">a burrito</span>
+                        <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0081/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        ours
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0081/text2tex/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        Text2Tex
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0081/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        TEXTure
+                                    </div>
+                                </th>
+                            </tr>
+                          </table>
+                    </li>
+                    <li class="slide">
+                        <span style="color: #009c3b;font-family: Bradley Hand;">a pretzel</span>
+                        <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0296/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        ours
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0296/text2tex/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        Text2Tex
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0296/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        TEXTure
+                                    </div>
+                                </th>
+                            </tr>
+                          </table>
+                    </li>
+                    <li class="slide">
+                        <span style="color: #009c3b;font-family: Bradley Hand;">a apricot</span>
+                        <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0018/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        ours
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0018/text2tex/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        Text2Tex 
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0018/texture/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        TEXTure
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="slide">
+                        <span style="color: #009c3b;font-family: Bradley Hand;">a tricycle</span>
+                        <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0389/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        ours
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0389/text2tex/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        Text2Tex 
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0389/texture/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        TEXTure
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="slide">
+                        <span style="color: #009c3b;font-family: Bradley Hand;">a skateboard</span>
+                        <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0337/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        ours
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0337/text2tex/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        Text2Tex 
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0337/texture/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        TEXTure
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="slide">
+                        <span style="color: #009c3b;font-family: Bradley Hand;">a bread</span>
+                        <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0069/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        ours
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0069/text2tex/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        Text2Tex 
+                                    </div>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop width="250">
+                                        <source src="assets/comparison/0069/texture/mesh_360_inpainted.mp4">
+                                    </video>
+                                    <div>
+                                        TEXTure
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+                </section>
+            <br>
+
+           
+        
+        </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+    <!-- <script type="text/javascript" src="cocoen.js"></script> -->
+    <!-- <script>
+        Cocoen.parse(document.body);
+    </script> -->
+</body>

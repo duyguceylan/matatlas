@@ -1,0 +1,10 @@
+{
+    "title": "Pix2Video:<br> Video Editing using Image Diffusion",
+    "authors": [
+        {
+            "name": "Anonymous CVPR submission 5980",
+            "email": "5980"
+        }
+    ],
+    "abstract": "We present MatAtlas, a method for consistent text-guided 3D model texturing. Following recent progress we leverage a large scale text-to-image generation model (e.g., Stable Diffusion) as a prior to texture a 3D model. We carefully design an RGB texturing pipeline that leverages a grid pattern diffusion, driven by depth and edges. By proposing a multi-step texture refinement process, we significantly improve the quality and 3D consistency of the texturing output. To further address the problem of baked-in lighting, we move beyond RGB colors and pursue assigning parametric materials to the assets. Given the high-quality initial RGB texture, we propose a novel material retrieval method capitalized on Large Language Models (LLM), enabling editabiliy and relightability. We evaluate our method on a wide variety of geometries and show that our method significantly outperform prior arts. We also carefully analyze the role of each component through a detailed ablation study."
+}
