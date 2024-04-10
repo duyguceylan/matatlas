@@ -36,14 +36,68 @@
 
             <div id='method'> 
                 <h2>Abstract</h2>
-                <p style="max-width:900px; font-size:18px; margin:auto; text-align: justify; margin-bottom: 1em;">We present MatAtlas, a method for consistent text-guided 3D model texturing. Following recent progress we leverage a large scale text-to-image generation model (e.g., Stable Diffusion) as a prior to texture a 3D model. We carefully design an RGB texturing pipeline that leverages a grid pattern diffusion, driven by depth and edges. By proposing a multi-step texture refinement process, we significantly improve the quality and 3D consistency of the texturing output. To further address the problem of baked-in lighting, we move beyond RGB colors and pursue assigning parametric materials to the assets. Given the high-quality initial RGB texture, we propose a novel material retrieval method capitalized on Large Language Models (LLM), enabling editabiliy and relightability. We evaluate our method on a wide variety of geometries and show that our method significantly outperform prior arts. We also carefully analyze the role of each component through a detailed ablation study.</p>
+                <p style="max-width:900px; font-size:18px; margin:auto; text-align: justify; margin-bottom: 1em;">We present MatAtlas, a method for consistent text-guided 3D model texturing. Following recent progress we leverage a large scale text-to-image generation model (e.g., Stable Diffusion) as a prior to texture a 3D model. We carefully design an RGB texturing pipeline that leverages a grid pattern diffusion, driven by depth and edges. By proposing a multi-step texture refinement process, we significantly improve the quality and 3D consistency of the texturing output. To further address the problem of baked-in lighting, we move beyond RGB colors and pursue assigning parametric materials to the assets. Given the high-quality initial RGB texture, we propose a novel material retrieval method capitalized on Large Language Models (LLM), enabling editabiliy and relightability. We evaluate our method on a wide variety of geometries and show that our method significantly outperform prior arts. We also analyze the role of each component through a detailed ablation study.</p>
             </div>
             <br>
-            <!-- <div id='method'> 
-                <h2>Method Overview</h2>
-                <p style="max-width:900px; font-size:18px; margin:auto; text-align: justify; margin-bottom: 1em;">Pix2Video first inverts each frame with DDIM-inversion and consider it as the initial noise for the denoising process. To edit each frame (lower row), we select a reference frame (upper row), inject its self-attention features to the UNet. At each diffusion step, we also update the latent of the current frame guided by the latent of the reference.</p>
-                <embed src="assets/imgs/texture_passes.pdf" height=285>
-            </div> -->
+            <br>
+            <div id="libby">
+                <span style="color: #009c3b;font-family: Bradley Hand;">a sports shoe, minimalistic, neutral color palette, light and airy, natural materials</span>
+                <table style="width: 90%;margin-left:auto;margin-right:auto;">
+                    <tr>
+                        <th>
+                            <img src="assets/final/sport_shoes_old_school.png" style="width:500px">
+                        </th>
+                        <th>
+                            <img src="assets/final/sport_shoes_old_school_004_0.png" style="width:500px">
+                        </th>
+                        <th>
+                            <img src="assets/final/sport_shoes_old_school_004_40.png" style="width:500px">
+                        </th>
+                        <th>
+                            <img src="assets/final/sport_shoes_old_school_004_130.png" style="width:500px">
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="libby">
+                <span style="color: #009c3b;font-family: Bradley Hand;">a red and silver metallic headphone</span>
+                <table style="width: 90%;margin-left:auto;margin-right:auto;">
+                    <tr>
+                        <th>
+                            <img src="assets/final/headphone_02.png" style="width:500px">
+                        </th>
+                        <th>
+                            <img src="assets/final/headphone_02_001_0.png" style="width:500px">
+                        </th>
+                        <th>
+                            <img src="assets/final/headphone_02_001_40.png" style="width:500px">
+                        </th>
+                        <th>
+                            <img src="assets/final/headphone_02_001_130.png" style="width:500px">
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div id="libby">
+                <span style="color: #009c3b;font-family: Bradley Hand;">a wood kiosk, stylized 3D Art props, handpainted, colorful, simplified, paint stroke</span>
+                <table style="width: 90%;margin-left:auto;margin-right:auto;">
+                    <tr>
+                        <th>
+                            <img src="assets/final/stylized_wood_kiosk.png" style="width:500px">
+                        </th>
+                        <th>
+                            <img src="assets/final/stylized_wood_kiosk_000_0.png" style="width:500px">
+                        </th>
+                        <th>
+                            <img src="assets/final/stylized_wood_kiosk_000_40.png" style="width:500px">
+                        </th>
+                        <th>
+                            <img src="assets/final/stylized_wood_kiosk_000_130.png" style="width:500px">
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <br>
             <br>
             <h2>Material assignment results on Source 3D Assets</h2>
             For each of the following 3D models from the Souce 3D Assets dataset, we show the generated texture, the material part segmentation, and the result obtained by retreiving materials for each part. In the last column, for each material group provided by the asset, we provide a link to the retreived Substance material.
@@ -77,7 +131,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/a3ed508ae7ff9bb5b56bff7499aa19d8ac55fd80" target="_blank">laces (preset:Default)</a>
                                 </div>
@@ -85,7 +139,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/fb1a78b629fdc5818da40db728e83c483fd6bfe7" target="_blank">football (preset:Patinated red leather)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -118,7 +172,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/4f1ce893a0672a066689d0b72ec788f0635f08f4" target="_blank">body (preset: Default)</a>
                                 </div>
@@ -132,7 +186,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/242875a499889ee4eb482f680c3f7627e6f819ff" target="_blank">sole (Preset: Glossy black)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                     </table>
                 </div>
@@ -165,7 +219,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/fb1a78b629fdc5818da40db728e83c483fd6bfe7" target="_blank">body (Preset: Patinated red leather)</a>
                                 </div>
@@ -179,7 +233,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/2ea7aa3a2677c4ff014804efa0eb7e50778404aa" target="_blank">eyelet (Preset: Clean strong orange copper)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -212,7 +266,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/242875a499889ee4eb482f680c3f7627e6f819ff" target="_blank">foot_bend (Preset: Glossy black)</a>
                                 </div>
@@ -244,7 +298,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/644def9d53fa2678652acd3469476fa8fc4aa365" target="_blank">laces (Preset: Glossy ebony twill fabric)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -277,7 +331,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/a2f74f89bb7a389e4e4b84a3acce9628aec0a9a7" target="_blank">mud (Preset:Fresh forest soil)</a>
                                 </div>
@@ -291,7 +345,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/32f286d70ec1ab348d31f0721712ea18fe64114c" target="_blank">stem (Preset: Green tomato)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -324,7 +378,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/f054b4d1ef6e43bb29fc5f391384c986cbc75426" target="_blank">body (Preset: Ocher paper)</a>
                                 </div>
@@ -340,7 +394,7 @@
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/3864bfbaaf3fb565e141d9daccb2a485e9ad9f6f" target="_blank">cap (Preset: Golden oak leather)</a>
                                 </div>
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -373,7 +427,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/9e83f462021acd97a1d15e4e222b5fdd4c2da47d" target="_blank">frame (Preset: White glossy plastic)</a>
                                 </div>
@@ -384,7 +438,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/29cd27131f8913d283a94f880855bd0df93c9954" target="_blank">fabric (Preset: Default)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -417,7 +471,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/6efa7a553f87947c2c029cf1cd494f4ca7ac1d14" target="_blank">body (Preset: Ash)</a>
                                 </div>
@@ -431,7 +485,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/e51a9b662be910b7bbab137def90ce245ccd2996" target="_blank">hardware (Preset: Default)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -464,7 +518,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/8052103f237eed453088358a5a505a9b42a0d39a" target="_blank">cushion (Preset: Default)</a>
                                 </div>
@@ -475,7 +529,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/6d9f06304bf9277f0c56a609d4370478f6b7bcf7" target="_blank">frame (Preset: Lacquered rift cut)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -508,7 +562,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/474f5c143fb3d70e91868a6df61c376dda36e99a" target="_blank">main (Preset: Thick Trim Silver Beading)</a>
                                 </div>
@@ -531,7 +585,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/dec8c561e6f0456109ecb8adbef4b74817e9e868" target="_blank">strap_001 (Preset: Tobacco suede)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -564,7 +618,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/e66cd7d322531275f42c81f5eec703ae756bb6b1" target="_blank">strap (Preset: Matte red latex)</a>
                                 </div>
@@ -575,7 +629,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/f054b4d1ef6e43bb29fc5f391384c986cbc75426" target="_blank">paper (Preset: Ecru paper)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -608,7 +662,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/b0498e8dc657998b6560787c87bbd9d8e8c490e0" target="_blank">seat (Preset: Default)</a>
                                 </div>
@@ -619,7 +673,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/24dc9633c50c354334eefd604b15d6e1183b597d" target="_blank">leg (Preset: Protection varnish wood)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -652,7 +706,7 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/d64e5c28c74d497d00660e0a676a1ec96cb81254" target="_blank">box (Preset: Coral glossy paper)</a>
                                 </div>
@@ -660,7 +714,7 @@
                                 <a href="https://substance3d.adobe.com/assets/allassets/06fb30f87ec01183780289972388a1542030aa01" target="_blank">strap (Preset: Default)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -693,12 +747,12 @@
                                     material assignment
                                 </div>
                             </th>
-                            <th>
+                            <!--th>
                                 <div>
                                 <a href="https://substance3d.adobe.com/assets/allassets/551348704bc824774b38a56a510d6effd4af3b86" target="_blank">standardSurface_002 (Preset: Default)</a>
                                 </div>
 
-                            </th>
+                            </th-->
                         </tr>
                       </table>
                 </div>
@@ -1126,7 +1180,7 @@
                             </tr>
                           </table>
                     </li>
-                    <li class="slide">
+                    <!--li class="slide">
                         <span style="color: #009c3b;font-family: Bradley Hand;">a pretzel</span>
                         <table style="width: 50%;margin-left:auto;margin-right:auto;">
                             <tr>
@@ -1156,7 +1210,7 @@
                                 </th>
                             </tr>
                           </table>
-                    </li>
+                    </li-->
                     <li class="slide">
                         <span style="color: #009c3b;font-family: Bradley Hand;">a apricot</span>
                         <table style="width: 50%;margin-left:auto;margin-right:auto;">
@@ -1250,7 +1304,7 @@
                             </tr>
                         </table>
                     </li>
-                    <li class="slide">
+                    <!--li class="slide">
                         <span style="color: #009c3b;font-family: Bradley Hand;">a bread</span>
                         <table style="width: 50%;margin-left:auto;margin-right:auto;">
                             <tr>
@@ -1280,7 +1334,7 @@
                                 </th>
                             </tr>
                         </table>
-                    </li>
+                    </li-->
                 </ul>
                 </section>
             <br>
