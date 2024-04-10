@@ -6,7 +6,8 @@ function author_node(author) {
     var sup = document.createElement("sup");
     a.textContent = author.name;
     a.href = author.email;
-    sup.textContent = author.affiliations.map(String).join(",");
+    sup.textContent = author.footnote.map(String).join(",");
+    //sup.textContent = author.affiliations.map(String).join(",");
     span.appendChild(a);
     span.appendChild(sup);
     return span
