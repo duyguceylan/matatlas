@@ -85,41 +85,49 @@ make_site({
         {
             "name": "Duygu Ceylan",
             "email": "https://duygu-ceylan.com/",
+            "affiliations": ["1"],
             "footnote": [""]
         },
         {
             "name": "Valentin Deschaintre",
             "email": "https://valentin.deschaintre.fr/",
+            "affiliations": ["1"],
             "footnote": ["*"]
         },
         {
             "name": "Thibault Groueix",
             "email": "https://imagine.enpc.fr/~groueixt/",
+            "affiliations": ["1"],
             "footnote": ["*"]
         },
         {
             "name": "Rosalie Martin",
             "email": "https://research.adobe.com/person/rosalie-martin/",
+            "affiliations": ["1"],
             "footnote": [""]
         },
         {
             "name": "Chun-Hao Huang",
             "email": "https://paulchhuang.wixsite.com/chhuang",
+            "affiliations": ["1"],
             "footnote": [""]
         },
         {
             "name": "Romain Rouffet",
             "email": "https://research.adobe.com/person/romain-rouffet/",
+            "affiliations": ["1"],
             "footnote": [""]
         },
         {
             "name": "Vladimir Kim",
             "email": "http://www.vovakim.com/",
+            "affiliations": ["1"],
             "footnote": [""]
         },
         {
             "name": "Gaëtan Lassagne",
             "email": "https://gaetanlassagne.wordpress.com/about/",
+            "affiliations": ["1"],
             "footnote": [""]
         },
     ],
