@@ -80,14 +80,54 @@ for (var i = 0; i < sliders.length; i++) set_slider(sliders[i])
 // Read JSON
 make_site({
     "title": "MatAtlas: Text-driven Consistent Geometry Texturing and Material Assignment",
-    "conference": "CVPR 2024",
+    "conference": "Arxiv",
     "authors": [
         {
-            "name": "Anonymous CVPR submission 5980",
-            "affiliations": [],
+            "name": "Duygu Ceylan",
+            "email": "https://duygu-ceylan.com/",
+            "footnote": [""]
         },
-        
+        {
+            "name": "Valentin Deschaintre",
+            "email": "https://valentin.deschaintre.fr/",
+            "footnote": ["*"]
+        },
+        {
+            "name": "Thibault Groueix",
+            "email": "https://imagine.enpc.fr/~groueixt/",
+            "footnote": ["*"]
+        },
+        {
+            "name": "Rosalie Martin",
+            "email": "https://research.adobe.com/person/rosalie-martin/",
+            "footnote": [""]
+        },
+        {
+            "name": "Chun-Hao Huang",
+            "email": "https://paulchhuang.wixsite.com/chhuang",
+            "footnote": [""]
+        },
+        {
+            "name": "Romain Rouffet",
+            "email": "https://research.adobe.com/person/romain-rouffet/",
+            "footnote": [""]
+        },
+        {
+            "name": "Vladimir Kim",
+            "email": "http://www.vovakim.com/",
+            "footnote": [""]
+        },
+        {
+            "name": "Gaëtan Lassagne",
+            "email": "https://gaetanlassagne.wordpress.com/about/",
+            "footnote": [""]
+        },
     ],
-    "abstract": "We present MatAtlas, a method for consistent text-guided 3D model texturing. Following recent progress we leverage a large scale text-to-image generation model (e.g., Stable Diffusion) as a prior to texture a 3D model. We carefully design an RGB texturing pipeline that leverages a grid pattern diffusion, driven by depth and edges. By proposing a multi-step texture refinement process, we significantly improve the quality and 3D consistency of the texturing output. To further address the problem of baked-in lighting, we move beyond RGB colors and pursue assigning parametric materials to the assets. Given the high-quality initial RGB texture, we propose a novel material retrieval method capitalized on Large Language Models (LLM), enabling editabiliy and relightability. We evaluate our method on a wide variety of geometries and show that our method significantly outperform prior arts. We also carefully analyze the role of each component through a detailed ablation study."
+    "affiliations": ["Adobe"],
+    "footnote": ["equal contributors"],
+    "URLs": {
+        "arxiv": "https://arxiv.org/abs/2404.02899"
+    },
+    "abstract": "We present MatAtlas, a method for consistent text-guided 3D model texturing. Following recent progress we leverage a large scale text-to-image generation model (e.g., Stable Diffusion) as a prior to texture a 3D model. We carefully design an RGB texturing pipeline that leverages a grid pattern diffusion, driven by depth and edges. By proposing a multi-step texture refinement process, we significantly improve the quality and 3D consistency of the texturing output. To further address the problem of baked-in lighting, we move beyond RGB colors and pursue assigning parametric materials to the assets. Given the high-quality initial RGB texture, we propose a novel material retrieval method capitalized on Large Language Models (LLM), enabling editabiliy and relightability. We evaluate our method on a wide variety of geometries and show that our method significantly outperform prior arts. We also analyze the role of each component through a detailed ablation study."
 })
 //fetch("./paper.json").then(response => response.json).then(json => make_site(json));
