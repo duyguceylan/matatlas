@@ -132,7 +132,7 @@ make_site({
         },
     ],
     "affiliations": ["Adobe"],
-    "footnote": ["equal contributors"],
+    "footnote": ["equal contribution"],
     "URLs": {
         "arxiv": "https://arxiv.org/abs/2404.02899"
     },
